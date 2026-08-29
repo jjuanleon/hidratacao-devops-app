@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clima e Hidratação</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Clima e recomendação de hidratação</h1>
+
+    <form method="POST">
+      <label>
+        Cidade
+        <input type="text" name="city" placeholder="Ex: Belo Horizonte" required>
+      </label>
+      <label>
+        Seu peso (kg)
+        <input type="number" step="0.1" min="1" name="weight" placeholder="Ex: 70" required>
+      </label>
+      <button type="submit">Consultar</button>
+    </form>
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+      <section class="result">
+        <h2>{{ result.city }}</h2>
+        <p>Atual: {{ result.temp }}°C &nbsp;|&nbsp; Mín: {{ result.temp_min }}°C &nbsp;|&nbsp; Máx: {{ result.temp_max }}°C</p>
+        <p class="hydration">Beba aproximadamente <strong>{{ result.water_liters }} litros</strong> de água hoje</p>
+      </section>
+    {% endif %}
+  </main>
+</body>
+</html>
