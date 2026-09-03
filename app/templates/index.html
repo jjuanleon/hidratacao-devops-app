@@ -27,12 +27,20 @@
     {% endif %}
 
     {% if result %}
-      <section class="result">
-        <h2>{{ result.city }}</h2>
-        <p>Atual: {{ result.temp }}°C &nbsp;|&nbsp; Mín: {{ result.temp_min }}°C &nbsp;|&nbsp; Máx: {{ result.temp_max }}°C</p>
-        <p class="hydration">Beba aproximadamente <strong>{{ result.water_liters }} litros</strong> de água hoje</p>
-      </section>
+  <section class="result">
+    <h2>{{ result.city }}</h2>
+    <p>Atual: {{ result.temp }}°C &nbsp;|&nbsp; Mín: {{ result.temp_min }}°C &nbsp;|&nbsp; Máx: {{ result.temp_max }}°C</p>
+    <p class="hydration">Beba aproximadamente <strong>{{ result.water_liters }} litros</strong> de água hoje</p>
+
+    {% if result.imagem %}
+      <img
+        src="{{ url_for('static', filename='images/' + result.imagem) }}"
+        alt="Foto de {{ result.city }}"
+        class="city-image"
+      >
     {% endif %}
+  </section>
+{% endif %}
   </main>
 </body>
 </html>

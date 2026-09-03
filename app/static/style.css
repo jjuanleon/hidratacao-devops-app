@@ -72,3 +72,9 @@ button {
 .hydration {
   font-size: 18px;
 }
+
+.city-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 16px;
+}
